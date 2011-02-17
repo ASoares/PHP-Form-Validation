@@ -1,3 +1,7 @@
+index.php  has a typical example , if anyone decides to use this please , recheck the spelling on error messages ;-)
+
+
+
 /*
  *
  * ValidFluent
@@ -14,14 +18,6 @@
  * 	$valid->name('user_email')->required()->email();
  *
  * 	$valid->name('birthdate')->date('please enter date in YYYY-MM-DD format')
- *
- *
- *
- *
- *
- *
- *
- *
  *
  *
  */
