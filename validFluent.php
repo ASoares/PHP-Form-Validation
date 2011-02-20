@@ -47,6 +47,7 @@ class validFluentObj
 
     }
 
+
 /**
  * show off @property, @property-read, @property-write
  *
@@ -54,11 +55,9 @@ class validFluentObj
  * @property-read int $foo the foo prop
  * @property-write string $bar the bar prop
  */
-
 class ValidFluent
     {
-
-    private $post;
+   
     public $isValid = TRUE;
     public $isGroupValid = TRUE;
     public $validObjs; //array of validFluentObj
@@ -92,7 +91,10 @@ class ValidFluent
 
     function __construct($post)
 	{
-	$this->post = $post;
+	foreach ($post as $key => $value)
+	    {
+	    $this->validObjs[$key] = new validFluentObj(trim($value));
+	    }
 	}
 
 
@@ -206,11 +208,7 @@ class ValidFluent
      */
     function name($name)
 	{
-	if (isset($this->post[$name]))
-	    {
-	    $this->validObjs[$name] = new validFluentObj(trim($this->post[$name]));
-	    }
-	else
+	if (! isset($this->validObjs[$name]))
 	    $this->validObjs[$name] = new validFluentObj('');
 
 	$this->isValid = TRUE;
