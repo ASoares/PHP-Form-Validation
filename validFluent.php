@@ -4,7 +4,7 @@
  *
  * ValidFluent
  *
- * A simple, flexible and easy to use form validation class
+ * A simple, flexible and easy to use PHP form validation class
  * (uses a fluent interface )
  *
  * typical use:
@@ -17,15 +17,17 @@
  *
  * 	$valid->name('birthdate')->date('please enter date in YYYY-MM-DD format')
  *
+ * //////////////////////////////////////////////////////////////////
+ *    On HTML
+ * <form method="POST">
  *
- *
- *
- *
- *
- *
- *
- *
- *
+ * 	    <input type="text"   name="email"
+ * 		   value="<?php echo $vf->getValue('email'); ?>" />
+ * 	    <span class="error">
+ * 		<?php echo $vf->getError('email'); ?>
+ * 	    </span>
+ *	    ...
+ *	    ...
  */
 
 
@@ -49,15 +51,11 @@ class validFluentObj
 
 
 /**
- * show off @property, @property-read, @property-write
  *
- * @property mixed $regular regular read/write property
- * @property-read int $foo the foo prop
- * @property-write string $bar the bar prop
  */
 class ValidFluent
     {
-   
+
     public $isValid = TRUE;
     public $isGroupValid = TRUE;
     public $validObjs; //array of validFluentObj
@@ -89,6 +87,10 @@ class ValidFluent
     private $pattern_date = '/^(19|20)\d\d-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/';
 
 
+    /**
+     *
+     * @param Array $post  ($Key => $value) array
+     */
     function __construct($post)
 	{
 	foreach ($post as $key => $value)
@@ -203,12 +205,13 @@ class ValidFluent
 
     /**
      * if $name doesnt exits, it will be created with a empty value
+     *		note:validation always pass on empy not required fields
      * @param string $name as in array($name => 'name value')
      * @return ValidFluent
      */
     function name($name)
 	{
-	if (! isset($this->validObjs[$name]))
+	if (!isset($this->validObjs[$name]))
 	    $this->validObjs[$name] = new validFluentObj('');
 
 	$this->isValid = TRUE;
