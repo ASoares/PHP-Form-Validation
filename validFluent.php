@@ -22,9 +22,9 @@
  * <form method="POST">
  *
  * 	    <input type="text"   name="email"
- * 		   value="<?php echo $vf->getValue('email'); ?>" />
+ * 		   value="<?php echo $valid->getValue('email'); ?>" />
  * 	    <span class="error">
- * 		<?php echo $vf->getError('email'); ?>
+ * 		<?php echo $valid->getError('email'); ?>
  * 	    </span>
  *	    ...
  *	    ...
