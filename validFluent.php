@@ -431,6 +431,13 @@ class ValidFluent
 	    }
 	return $this;
 	}
+	
+	// same function, better spelled
+	function alpha($errorMsg=NULL)
+	{
+		$this->alfa($errorMsg);
+		return $this;
+	}
 
 
     /**
