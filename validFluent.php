@@ -14,7 +14,7 @@
  
   	$valid = new ValidFluent($_POST);
  
-  	$valid->name('user_name')->required('You must chose a user name!')->alfa()->minSize(5);
+  	$valid->name('user_name')->required('You must choose a user name!')->alfa()->minSize(5);
  
   	$valid->name('user_email')->required()->email();
  
@@ -28,7 +28,7 @@
  * 
 	 $valid = new ValidFluent($_POST);
  
-  	if (  $valid->name('user_name')->required('You must chose a user name!')->alfa()->minSize(5)
+  	if (  $valid->name('user_name')->required('You must choose a user name!')->alfa()->minSize(5)
   		    ->name('user_email')->required()->email()
   		    ->name('birthdate')->date('please enter date in YYYY-MM-DD format')
   		    ->isGroupValid() )
@@ -109,17 +109,17 @@ class ValidFluent
     private static $error_date = 'Please enter a date in the YYYY-MM-DD format';
     private static $error_email = 'Please enter a valid email';
     private static $error_url = 'Please enter a valid url';
-    private static $error_alfa = 'Only leters and numbers are permited';
-    private static $error_text = 'Only leters are permited';
+    private static $error_alfa = 'Only letters and numbers are permited';
+    private static $error_text = 'Only letters are permited';
     private static $error_minSize = 'Please enter more than %s characters';
     private static $error_maxSize = 'Please enter less than %s characters';
-    private static $error_numberFloat = 'Only numbers are permited';
-    private static $error_numberInteger = 'Only numbers are permited';
+    private static $error_numberFloat = 'Only numbers are permitted';
+    private static $error_numberInteger = 'Only numbers are permitted';
     private static $error_numberMax = 'Please enter a value lower than %s ';
     private static $error_numberMin = 'Please enter a value greater than %s ';
-    private static $error_oneOf = 'Please chose one of " %s "';
-    private static $error_equal = 'Fields didnt match';
-    private static $error_regex = 'Please chose a valid value';
+    private static $error_oneOf = 'Please choose one of " %s "';
+    private static $error_equal = 'Fields did not match';
+    private static $error_regex = 'Please choose a valid value';
     // some regEx's
     private $pattern_email = '/^([a-zA-Z0-9_\+\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/';
     private $pattern_url = '/^((http|ftp|https):\/\/)?www\..*.\.\w\w\w?(\/.*)?(\?.*)?$/'; //check...
@@ -430,6 +430,13 @@ class ValidFluent
 		$this->setErrorMsg($errorMsg, self::$error_alfa);
 	    }
 	return $this;
+	}
+	
+	// same function, better spelled
+	function alpha($errorMsg=NULL)
+	{
+		$this->alfa($errorMsg);
+		return $this;
 	}
 
 
