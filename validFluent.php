@@ -139,7 +139,10 @@ class ValidFluent
 	{
 	foreach ($post as $key => $value)
 	    {
-	    $this->validObjs[$key] = new validFluentObj(trim($value));
+      if(gettype($value) === 'string'){
+        $value = trim($value);
+      }
+	    $this->validObjs[$key] = new validFluentObj($value);
 	    }
 	}
 
@@ -270,7 +273,12 @@ class ValidFluent
 	{
 	if ($this->isValid)
 	    {
-	    $this->isValid = ( $this->currentObj->value != '') ? TRUE : FALSE;
+        if(is_array($this->currentObj->value)){
+          $this->isValid = (count($this->currentObj->value) > 0) ? TRUE: FALSE;
+        }
+        else{
+          $this->isValid = ( $this->currentObj->value != '') ? TRUE : FALSE;
+        }
 	    if (!$this->isValid)
 		$this->setErrorMsg($errorMsg, self::$error_required);
 	    }
