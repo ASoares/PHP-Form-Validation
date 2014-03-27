@@ -376,7 +376,7 @@ class ValidFluent
      */
     function oneOf($items, $errorMsg=NULL)
 	{
-	if ($this->isValid && (!empty($this->currentObj->value)))
+	if ($this->isValid && (isset($this->currentObj->value)))
 	    {
 
 	    $item = explode(':', strtolower($items));
