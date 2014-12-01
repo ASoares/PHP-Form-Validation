@@ -1,0 +1,21 @@
+{
+  "name": "fruitware/php-form-validation",
+  "type": "library",
+  "license": "GPL v2",
+  "description" : "PHP form validation Class , simple and easy to use class , yet flexible and easy to upgrade",
+  "keywords": [
+    "form",
+    "validation"
+  ],
+  "homepage": "https://github.com/ASoares/PHP-Form-Validation",
+  "authors": [
+    {
+      "name": "Andre Soares"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.3"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
